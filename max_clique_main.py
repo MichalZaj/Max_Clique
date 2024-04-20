@@ -1,8 +1,8 @@
 import sys
 from bruteforce_solver import bruteforce_solve
-#from approximation_solver import approximation_solve
+from approximation_solver import approximation_solve
 #from original_solver import original_solve
-from utils import read_adjacency_matrix  # Import the utility function
+from utils import read_adjacency_matrix
 
 def main():
     if len(sys.argv) < 3:
@@ -11,21 +11,22 @@ def main():
     
     solver_type = sys.argv[1]
     filename = sys.argv[2]
-    # Read the adjacency matrix from the file
     adjacency_matrix = read_adjacency_matrix(filename)
 
     if solver_type == "bruteforce":
         max_clique_nodes = bruteforce_solve(adjacency_matrix)
-        print("Nodes in the Max Clique:", max_clique_nodes)
     elif solver_type == "approximation":
-        print("approximation")
-        #approximation_solve(adjacency_matrix)
-    elif solver_type == "original":
-        print("original")
-        #original_solve(adjacency_matrix)
+        max_clique_nodes = approximation_solve(adjacency_matrix)
+    #elif solver_type == "original":
+       # max_clique_nodes = original_solve(adjacency_matrix)
     else:
         print("Invalid solver type specified.")
+        return
+
+    print("Nodes in the Max Clique:", max_clique_nodes)
+    print("Number of Nodes in the Max Clique:", len(max_clique_nodes))
 
 if __name__ == "__main__":
     main()
+
 

@@ -15,10 +15,11 @@ def bruteforce_solve(adjacency_matrix):
     for r in range(1, n+1):
         for subset in combinations(range(n), r):
             if is_clique(subset, adjacency_matrix):
-                # If current subset is larger than the current largest clique, update it
+                # Update the largest found clique if current is larger
                 if len(subset) > len(max_clique):
                     max_clique = subset
-    return max_clique
+
+    return list(max_clique)  # Return the list of nodes in the max clique
 
     # Adjacency matrix format
     """clique_matrix = [[0]*n for _ in range(n)]
@@ -28,5 +29,3 @@ def bruteforce_solve(adjacency_matrix):
                 clique_matrix[i][j] = 1
 
     return clique_matrix"""
-
-# This function can be tested with an adjacency matrix as input.
