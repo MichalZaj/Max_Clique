@@ -22,5 +22,12 @@ def read_adjacency_matrix(filename):
 
     return adjacency_matrix
 
+def is_clique(nodes, graph):
+    """Check if the given nodes form a clique in the graph."""
+    for i in range(len(nodes)):
+        for j in range(i + 1, len(nodes)):
+            if graph[nodes[i]][nodes[j]] == 0:
+                return False
+    return True
 
 

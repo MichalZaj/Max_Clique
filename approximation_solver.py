@@ -34,7 +34,7 @@ def approximation_solve(adjacency_matrix):
     # Step 2: Compute all vertices of the graph
     all_vertices = set(range(len(adjacency_matrix)))
     
-    # Step 3: Determine the maximal clique by finding the complement of the vertex cover
+    # Step 3: Determine the max clique by finding the complement of the vertex cover
     # The max clique in the original graph corresponds to the independent set in the complement graph
     max_clique = list(all_vertices - vertex_cover)
     
