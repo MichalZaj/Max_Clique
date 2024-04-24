@@ -15,6 +15,15 @@ This approach uses a reduction strategy combined with a greedy vertex-cover appr
 ### 3. Local Search
 The local search algorithm starts with a random vertex and iteratively tries to expand or shrink the current solution based on a set of heuristics and random decisions. This method is faster and can often find large cliques, but the results vary with each run.
 
+## Prerequisites
+Before you can run the algorithms provided in this repository, you must have Python installed on your computer.
+
+### Installing Python
+
+If you do not have Python installed, you can download it from the official Python website:
+
+[Download Python](https://www.python.org/downloads/)
+
 ## Installation / Build
 Clone the repository to your local machine:
  ```
