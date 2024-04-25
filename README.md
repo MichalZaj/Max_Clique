@@ -4,16 +4,16 @@
 The **Max Clique Problem** involves finding the largest clique (a subset of vertices such that every two vertices are adjacent) within a given graph. This problem is NP-Hard, meaning there is no known polynomial-time solution.
 
 ## Solutions Implemented
-Three distinct approaches are implemented in this repository to tackle the Max Clique problem:
+Three approaches to the Max Clique problem are implemented in this repository:
 
 ### 1. Bruteforce
-The bruteforce solution examines all possible combinations of vertices to find the largest subset that forms a clique. This method guarantees finding the max clique but is computationally expensive and impractical for large graphs.
+The bruteforce solution examines all possible combinations of vertices to find the largest subset that forms a clique. This method finds the max clique but is computationally expensive.
 
 ### 2. Reduction/Approximation
 This approach uses a reduction strategy combined with a greedy vertex-cover approximation algorithm. It doesn't guarantee the largest clique and ouputs terrible cliques.
 
-### 3. Local Search
-The local search algorithm starts with a random vertex and iteratively tries to expand or shrink the current solution based on a set of heuristics and random decisions. This method is faster and can often find large cliques, but the results vary with each run.
+### 3. Local Search + Dynamic Heuristics
+The local search algorithm starts with a random vertex and adjusts its strategy based on the graph's density. It iteratively attempts to expand or shrink the current solution through a dynamic set of heuristics, which include probabilities for vertex addition, removal, and periodic restarts. Results still vary greatly with each run. Adjustments to probabilities are made based on the progress of the search.
 
 ## Prerequisites
 Before you can run the algorithms provided in this repository, you must have Python installed on your computer.
@@ -57,10 +57,12 @@ Where `solver_type` can be `bruteforce`, `approximation`, or `original`, and `fi
 - **approximation_solver.py**: Implements the reduction/approximation algorithm.
 - **bruteforce_solver.py**: Contains the brute-force solution to find the max clique.
 - **max_clique_main.py**: Runs the specified algorithm on provided graph data.
+- **original_solver.py**: Contains the Local Search + Dynamic Heuristics algorithm.
 - **requirements.txt**: Lists all Python libraries required to run the scripts.
-- **utils.py**: Utility functions used across different modules.
+- **utils.py**: Utility functions 
 
 ### Utils.py Functions
 - **read_adjacency_matrix(filename)**: Reads a graph from a file and converts it into an adjacency matrix format.
 - **is_clique(nodes, graph)**: Checks if a given set of nodes forms a clique in the graph.
+- **calculate_density(graph)**: Calculates the density of the graph by determining the ratio of actual edges to the total possible edges.
 
