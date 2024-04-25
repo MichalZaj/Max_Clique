@@ -1,7 +1,7 @@
 from itertools import combinations
 
 def is_clique(subset, adjacency_matrix):
-    """ Check if all nodes in the subset are mutually connected """
+    #Check if all nodes in the subset are connected 
     for i in subset:
         for j in subset:
             if i != j and adjacency_matrix[i][j] == 0:

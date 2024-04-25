@@ -30,4 +30,10 @@ def is_clique(nodes, graph):
                 return False
     return True
 
+def calculate_density(graph):
+    total_possible_edges = len(graph) * (len(graph) - 1) / 2
+    actual_edges = sum(sum(row) for row in graph) / 2  # Each edge counted twice in an adjacency matrix
+    density = actual_edges / total_possible_edges
+    return density
+
 

@@ -1,6 +1,16 @@
 def vertex_cover_greedy(graph):
     n = len(graph)
-    E_prime = [(i, j) for i in range(n) for j in range(i + 1, n) if graph[i][j] == 1]
+    # Initialize an empty list to store the edges
+    E_prime = []
+
+    # Iterate over each node in the graph
+    for i in range(n):
+        # Check each subsequent node to form an edge
+        for j in range(i + 1, n):
+            # If there is an edge between nodes i and j, add it to the list
+            if graph[i][j] == 1:
+                E_prime.append((i, j))
+
     vertex_cover = set()
 
     while E_prime:
@@ -22,8 +32,20 @@ def vertex_cover_greedy(graph):
     return vertex_cover
 
 def complement_graph(graph):
-    n = len(graph)
-    complement = [[1 if i != j and graph[i][j] == 0 else 0 for j in range(n)] for i in range(n)]
+    n = len(graph)  # Determine the size of the graph
+    complement = []  # Initialize an empty list for the complement graph
+
+    # Iterate over each row in the graph
+    for i in range(n):
+        complement_row = []  # Initialize a new row for the complement graph
+        for j in range(n):
+            # Check if there is no edge between node i and node j and i is not equal to j
+            if i != j and graph[i][j] == 0:
+                complement_row.append(1)  # No edge in the original graph, so add an edge in the complement
+            else:
+                complement_row.append(0)  # Either there is an edge, or it's the same node
+        complement.append(complement_row)  # Add the completed row to the complement graph
+
     return complement
 
 def approximation_solve(adjacency_matrix):
@@ -35,7 +57,7 @@ def approximation_solve(adjacency_matrix):
     all_vertices = set(range(len(adjacency_matrix)))
     
     # Step 3: Determine the max clique by finding the complement of the vertex cover
-    # The max clique in the original graph corresponds to the independent set in the complement graph
+    # V - VC = MC
     max_clique = list(all_vertices - vertex_cover)
     
     return max_clique
