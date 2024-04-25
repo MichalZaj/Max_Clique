@@ -1,28 +1,25 @@
 def vertex_cover_greedy(graph):
     n = len(graph)
-    # Initialize an empty list to store the edges
     E_prime = []
 
     # Iterate over each node in the graph
     for i in range(n):
-        # Check each subsequent node to form an edge
         for j in range(i + 1, n):
-            # If there is an edge between nodes i and j, add it to the list
+            # if there is an edge between nodes i and j, add it to the list
             if graph[i][j] == 1:
                 E_prime.append((i, j))
 
     vertex_cover = set()
 
     while E_prime:
-        u, v = E_prime.pop(0)  # Take an arbitrary edge
-        vertex_cover.update([u, v])  # Add both u and v to the vertex cover
+        u, v = E_prime.pop(0)  # take an edge
+        vertex_cover.update([u, v])  # add both u and v to the vertex cover
 
-        # Initialize a new list for remaining edges
         remaining_edges = []
 
-        # Loop through each edge in E_prime
+        # loop through each edge
         for e in E_prime:
-            # Check if either vertex of the edge matches u or v
+            # check if either vertex of the edge matches u or v
             if e[0] != u and e[0] != v and e[1] != u and e[1] != v:
                 remaining_edges.append(e)  # Keep the edge if it's not incident to u or v
 
@@ -32,19 +29,19 @@ def vertex_cover_greedy(graph):
     return vertex_cover
 
 def complement_graph(graph):
-    n = len(graph)  # Determine the size of the graph
-    complement = []  # Initialize an empty list for the complement graph
+    n = len(graph)  # size of graph
+    complement = []  
 
     # Iterate over each row in the graph
     for i in range(n):
-        complement_row = []  # Initialize a new row for the complement graph
+        complement_row = []
         for j in range(n):
-            # Check if there is no edge between node i and node j and i is not equal to j
+            # check if there is no edge between node i and node j and i is not equal to j
             if i != j and graph[i][j] == 0:
-                complement_row.append(1)  # No edge in the original graph, so add an edge in the complement
+                complement_row.append(1)  # add an edge in the complement
             else:
                 complement_row.append(0)  # Either there is an edge, or it's the same node
-        complement.append(complement_row)  # Add the completed row to the complement graph
+        complement.append(complement_row)  # Add to the complement graph
 
     return complement
 

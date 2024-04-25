@@ -19,14 +19,14 @@ def local_search(graph, density, max_iterations=1000):
     current_clique = set([random.randint(0, n-1)])
     best_clique = current_clique.copy()
     
-    add_prob = 0.7 if density > 0.5 else 0.3  # More aggressive expansion in dense graphs
-    remove_prob = 0.2 if density > 0.5 else 0.7  # More pruning in sparse graphs
-    restart_prob = 0.01 if density > 0.5 else 0.1  # Less frequent restarts in dense graphs, more in sparse
+    add_prob = 0.7 if density > 0.5 else 0.3  # more expansion in dense graphs
+    remove_prob = 0.2 if density > 0.5 else 0.7  # more pruning in sparse graphs
+    restart_prob = 0.01 if density > 0.5 else 0.1  # less frequent restarts in dense graphs and more in sparse
 
     iterations_without_improvement = 0
     max_iterations_without_improvement = 50  # Threshold can be adjusted
 
-    # Use tqdm for the loop to show a progress bar
+    # tqdm for the loop to show a progress bar
     for iteration in tqdm(range(max_iterations), desc="Searching for Max Clique"):
         improved = False
         # Check if adding a vertex based on add probability
@@ -55,9 +55,9 @@ def local_search(graph, density, max_iterations=1000):
 
         # Adjustments based on the lack of improvements
         if iterations_without_improvement >= max_iterations_without_improvement:
-            restart_prob += 0.05  # Incrementally increase the restart probability
-            iterations_without_improvement = 0  # Reset the counter after adjustment
-            if restart_prob > 0.5:  # Keep the restart probability within reasonable limits
+            restart_prob += 0.05  # increase the restart probability
+            iterations_without_improvement = 0  # reset the counter after adjustment
+            if restart_prob > 0.5:  # make sure the restart probability is reasonable
                 restart_prob = 0.5
 
     return list(best_clique)
