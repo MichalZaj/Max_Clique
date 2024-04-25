@@ -25,7 +25,7 @@ If you do not have Python installed, you can download it from the official Pytho
 [Download Python](https://www.python.org/downloads/)
 
 ## Installation / Build
-Clone the repository to your local machine:
+Clone or dowlnoad the repository to your local machine:
  ```
  git clone https://github.com/MichalZaj/Max_Clique.git
  cd Max_Clique
